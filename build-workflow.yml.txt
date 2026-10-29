@@ -1,0 +1,31 @@
+# Move this file to .github/workflows/build.yml (GitHub blocks API writes to workflow folders).
+# Content once moved (remove this comment line and keep from "name:"):
+
+name: Build Windows VST3
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master, feature/auto-master ]
+    paths:
+      - 'Source/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: lukka/get-cmake@latest
+      - name: Configure
+        run: cmake -S . -B build -A x64
+      - name: Build VST3
+        run: cmake --build build --config Release --target AutoMaster_VST3
+      - name: Upload plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoMaster-Windows-VST3
+          path: build/AutoMaster_artefacts/Release/VST3/Auto-Master.vst3/**
