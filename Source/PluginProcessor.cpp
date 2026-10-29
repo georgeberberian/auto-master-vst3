@@ -83,7 +83,13 @@ void LoudnessMeter::pushBlock (double power)
     while (blocks.size() > 6000) blocks.pop_front(); // 10 min
 
     if (blocks.size() >= 30)
-    row-placeholder-marker
+    {
+        double sum = 0.0;
+        for (size_t i = blocks.size() - 30; i < blocks.size(); ++i)
+            sum += blocks[i];
+        shortTermHistory.push_back (sum / 30.0);
+        while (shortTermHistory.size() > 1800) shortTermHistory.pop_front(); // 3 min
+    }
 }
 
 float LoudnessMeter::momentaryLUFS() const
