@@ -85,7 +85,7 @@ private:
     std::array<juce::dsp::IIR::Filter<float>, 2> warmthShelf, airShelf, harshBand;
     std::array<juce::SmoothedValue<float>, 2> harshGain;
     juce::dsp::ProcessorDuplicator<juce::dsp::Compressor<float>> glue;
-    juce::ProcessorDuplicator<juce::dsp::Limiter<float>> limiter;
+    juce::dsp::ProcessorDuplicator<juce::dsp::Limiter<float>>  limiter;
     juce::dsp::Gain<float> makeup;
 
     float cachedWarmth = 999.0f, cachedAir = 999.0f, cachedHarshFreq = -1.0f;
