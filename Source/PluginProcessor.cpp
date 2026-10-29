@@ -246,7 +246,7 @@ void AutoMasterAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         {
             cachedAir = air;
             auto c = juce::dsp::IIR::Coefficients<float>::makeHighShelf (sampleRate, 8000.0, 0.7f,
-                          juce::Decibels::Gain, 0.7f, juce::Decibels::decibelsToGain (air));
+                          juce::Decibels::decibelsToGain (air));
             for (auto& f : airShelf) f.coefficients = c;
         }
 
