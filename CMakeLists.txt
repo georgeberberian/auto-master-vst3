@@ -24,6 +24,9 @@ juce_add_plugin(AutoMaster
     FORMATS VST3 Standalone
     VST3_CATEGORIES Fx Mastering)
 
+# Generate JuceHeader.h for source files that include it.
+juce_generate_juce_header(AutoMaster)
+
 target_sources(AutoMaster PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginProcessor.h
