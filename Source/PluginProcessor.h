@@ -88,7 +88,7 @@ private:
     juce::dsp::ProcessorDuplicator<juce::dsp::Limiter<float>>  limiter;
     juce::dsp::Gain<float> makeup;
 
-    float cachedWarmth = 999.0f, cachedAir = 999. file, cachedHarshFreq = -1.0f;
+    float cachedWarmth = 999.0f, cachedAir = 999.0f, cachedHarshFreq = -1.0f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AutoMasterAudioProcessor)
 };
